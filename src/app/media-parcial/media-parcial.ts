@@ -15,9 +15,11 @@ export class MediaParcial {
 
     calcularMediaParcial(bim1:number,bim2:number){
         if (bim1 >= 0 && bim2 >=0){
-            this.mediaParcial = (bim1 * 2 + bim2 * 3)/5
+            this.mediaParcial = (bim1 * 2 + bim2 * 3)/5;
+            this.situacao = this.verificarSituacao(this.mediaParcial);
         } else{
-            this.mediaParcial = undefined
+            this.mediaParcial = undefined;
+            this.situacao = '';
         }
     }
 
