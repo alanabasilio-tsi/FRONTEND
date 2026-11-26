@@ -1,0 +1,94 @@
+<div class="container mt-5">
+
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold">Cadastrar novo contato</h1>
+    </div>
+
+    <form [formGroup]="formulario" class="card-body">
+
+        <div class="mb-3">
+            <label class="form-label">Nome</label>
+            <input type="text" class="form-control" formControlName="nome">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Telefone</label>
+            <input id="telefone" type="tel" class="form-control" formControlName="telefone">
+        </div>
+
+         <div class="mb-3">
+                <label class="form-label">E-mail</label>
+                <input type="email" class="form-control" formControlName="email">
+            </div>
+
+         <div class="mb-3">
+                <label class="form-label">Aniversário</label>
+                <input type="date" class="form-control" formControlName="aniversario">
+            </div>
+
+        <div class="mb-3">
+                <label class="form-label">Tipo de contato</label>
+                <select class="form-select" formControlName="tipo">
+                    <option value="amigo">Amigo(a)</option>
+                    <option value="família">Família</option>
+                    <option value="trabalho">Trabalho</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            <button [disabled]="formulario.invalid" class="btn btn-success"
+                type="button"
+                (click)="cadastrarContato(formulario.getRawValue())">
+                Cadastrar
+            </button>
+
+             <button class="btn btn-primary ms-2"
+                type="button"
+                (click)="exibirAgenda()">
+                Exibir contatos
+            </button>
+    </form>
+
+    @if (mostrarAgenda) {
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Contatos cadastrados</h5>
+            </div>
+
+            <div class="card-body">
+
+                @if (contatos.length > 0) {
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Telefone</th>
+                                    <th>E-mail</th>
+                                    <th>Aniversário</th>
+                                    <th>Tipo</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @for (contato of contatos; track $index) {
+                                    <tr>
+                                        <td>{{ contato.nome }}</td>
+                                        <td>{{ contato.telefone }}</td>
+                                        <td>{{ contato.email }}</td>
+                                        <td>{{ contato.aniversario }}</td>
+                                        <td>{{ contato.tipo }}</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                } @else {
+                    <p class="text-muted text-center mb-0">
+                        Nenhum contato cadastrado.
+                    </p>
+                }
+            </div>
+        </div>
+    }
+</div>
