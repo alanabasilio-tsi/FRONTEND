@@ -2,6 +2,24 @@
 
     <h1>Parlamentares da legislatura atual</h1>
 
+    <form [formGroup]="formulario">
+        <div>
+            <label>Nome</label>
+            <input type="text" formControlName="nome">
+        </div>
+        <div>
+            <label>Partido</label>
+            <input type="text" formControlName="partido">
+        </div>
+        <div>
+            <label>Estado</label>
+            <input type="text" formControlName="estado">
+        </div>
+        <button type="button" (click)="buscar()" [disabled]="formulario.invalid">Buscar</button>
+        <button type="button" (click)="formulario.reset()">Limpar</button>
+        <button type="button" (click)="buscar()">Listar Todos</button>
+    </form>
+
     <section class="deputados">
     @for(dep of deputados(); track dep.id) {
         <div class="card">

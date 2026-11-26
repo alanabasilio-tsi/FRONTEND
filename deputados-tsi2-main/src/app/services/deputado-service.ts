@@ -19,7 +19,18 @@ export class DeputadoService {
       `${this.API}/deputados?ordem=ASC&ordenarPor=nome`)
   }
 
-  obterPorEstado(siglauf: string) {
-    
+  obterPorNome (nome: string):Observable<RespostaApi>{
+    return this.#http.get<RespostaApi>(
+      `${this.API}/deputados?nome=${nome}`)
+  }
+
+  obterPorPartido (partido: string):Observable<RespostaApi>{
+    return this.#http.get<RespostaApi>(
+      `${this.API}/deputados?siglaPartido=${partido}`)
+  }
+
+  obterPorEstado(siglaUf: string):Observable<RespostaApi> {
+    return this.#http.get<RespostaApi>(
+      `${this.API}/deputados?siglaUf=${siglaUf}`)
   }
 }
