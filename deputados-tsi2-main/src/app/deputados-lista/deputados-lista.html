@@ -1,0 +1,19 @@
+<section class="container">
+
+    <h1>Parlamentares da legislatura atual</h1>
+
+    <section class="deputados">
+    @for(dep of deputados(); track dep.id) {
+        <div class="card">
+            <img [src]="dep.urlFoto" alt="">
+            <p>{{dep.nome}} - {{dep.id}}</p>
+            <p>{{dep.siglaPartido}}</p>
+            <p>{{dep.siglaUf}}</p>
+        </div>
+    }
+    </section>
+</section>
+
+
+
+
